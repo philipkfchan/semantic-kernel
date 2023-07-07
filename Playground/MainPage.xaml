@@ -57,15 +57,27 @@
                     BackgroundColor="LightYellow"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"/>
-                <Button
-                    x:Name="submitBtn"
-                    Text="Submit"
-                    Background="lime"
-                    TextColor="Purple"
-                    SemanticProperties.Hint="Accepts Prompt"
-                    Clicked="OnSubmitBtnClicked"
+                <HorizontalStackLayout
                     VerticalOptions="Center"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="Center">
+                    <Button
+                        x:Name="submitBtn"
+                        Text="Submit"
+                        Background="lime"
+                        TextColor="Purple"
+                        SemanticProperties.Hint="Accepts Prompt"
+                        Clicked="OnSubmitBtnClicked"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center" />
+                    <Button
+                        x:Name="clearBtn"
+                        Text="Clear"
+                        Background="lime"
+                        TextColor="Purple"
+                        Clicked="OnClearBtnClicked"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center" />
+                </HorizontalStackLayout>
             </VerticalStackLayout>
             <VerticalStackLayout
                 VerticalOptions="Center"

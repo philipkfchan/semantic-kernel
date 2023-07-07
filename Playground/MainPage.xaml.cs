@@ -43,20 +43,20 @@ public partial class MainPage : ContentPage
         {
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                switch (reply)
+                switch (reply.Trim().ToLower())
                 {
-                    case "RedTrace":
+                    case "redtrace":
                         this.blueTrace.IsVisible = false;
                         this.redTrace.IsVisible = true;
                         break;
-                    case "BlueTrace":
+                    case "bluetrace":
                         this.blueTrace.IsVisible = true;
                         this.redTrace.IsVisible = false;
                         break;
-                    case "RedButton":
+                    case "redbutton":
                         this.btn.BackgroundColor = Colors.Red;
                         break;
-                    case "BlueButton":
+                    case "bluebutton":
                         this.btn.BackgroundColor = Colors.Blue;
                         break;
                     default:
@@ -125,6 +125,11 @@ public partial class MainPage : ContentPage
         {
             this.intention.WritePromptToOutput();
         }
+    }
+
+    private void OnClearBtnClicked(object sender, EventArgs e)
+    {
+        this.responseEditor.Text = string.Empty;
     }
 }
 
