@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Playground.MainPage">
+    <ScrollView>
+        <HorizontalStackLayout
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+            <VerticalStackLayout
+                Spacing="10"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+                <Editor x:Name="responseEditor"
+                    Placeholder="OpenAI"
+                    HeightRequest="500"
+                    WidthRequest="500"
+                    FontSize="12"
+                    TextColor="Black"
+                    PlaceholderColor="Blue"
+                    IsReadOnly="True"
+                    BackgroundColor="LightYellow"
+                    VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+                <Picker x:Name="modelPicker"
+                    Title="Feature:"
+                    FontSize="12"
+                    TitleColor="blue"
+                    VerticalOptions="Center"
+            HorizontalOptions="Center"
+                    WidthRequest="500"
+                    BackgroundColor="LightYellow"
+                    SelectedIndexChanged="modelPicker_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>chat</x:String>
+                            <x:String>text</x:String>
+                            <x:String>intention</x:String>
+                            <x:String>moderation</x:String>
+                            <x:String>image</x:String>
+                            <x:String>audio</x:String>
+                            <x:String>other</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Editor x:Name="promptEditor"
+                    Placeholder="Enter your prompt here"
+                    HeightRequest="75"
+                    WidthRequest="500"
+                    TextColor="Black"
+                    FontSize="12"
+                    PlaceholderColor="Blue"
+                    IsSpellCheckEnabled="True"
+                    BackgroundColor="LightYellow"
+                    VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+                <Button
+                    x:Name="submitBtn"
+                    Text="Submit"
+                    Background="lime"
+                    TextColor="Purple"
+                    SemanticProperties.Hint="Accepts Prompt"
+                    Clicked="OnSubmitBtnClicked"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center" />
+            </VerticalStackLayout>
+            <VerticalStackLayout
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Padding="50">
+                <Button
+                    x:Name="btn"
+                    BackgroundColor="Red"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    HeightRequest="150"
+                    WidthRequest="150"
+                    />
+            </VerticalStackLayout>
+        </HorizontalStackLayout>
+    </ScrollView>
+</ContentPage>
