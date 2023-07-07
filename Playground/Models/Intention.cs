@@ -24,12 +24,14 @@ public class Intention
     }
     private Func<string> readUserInput;
     private Action<string> writeBotOutput;
+    private Action<string> changeGui;
     private IKernel kernel;
 
-    public Intention(string modelId, string apiKey, Func<string> readUserInput, Action<string> writeBotOutput)
+    public Intention(string modelId, string apiKey, Func<string> readUserInput, Action<string> writeBotOutput, Action<string> changeGui)
     {
         this.readUserInput = readUserInput;
         this.writeBotOutput = writeBotOutput;
+        this.changeGui = changeGui;
         this.kernel = new KernelBuilder().WithOpenAITextCompletionService(modelId, apiKey).Build();
     }
 
@@ -46,6 +48,7 @@ public class Intention
         try
         {
             var result = await semanticFunction.InvokeAsync(context);
+            this.changeGui(result.ToString());
             this.WriteToOutput("Intention", result.ToString());
         }
         catch (Exception ex)

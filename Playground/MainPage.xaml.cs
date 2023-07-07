@@ -9,10 +9,11 @@ public partial class MainPage : ContentPage
     private Intention intention;
     private string ApiKey
     {
-        get => "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";
+        get => "";
     }
     private Func<string> readUserInput;
     private Action<string> writeBotOutput;
+    private Action<string> changeGui;
 
     public MainPage()
     {
@@ -38,10 +39,35 @@ public partial class MainPage : ContentPage
                 this.responseEditor.Text += x;
             });
         };
+        this.changeGui = reply =>
+        {
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                switch (reply)
+                {
+                    case "RedTrace":
+                        this.blueTrace.IsVisible = false;
+                        this.redTrace.IsVisible = true;
+                        break;
+                    case "BlueTrace":
+                        this.blueTrace.IsVisible = true;
+                        this.redTrace.IsVisible = false;
+                        break;
+                    case "RedButton":
+                        this.btn.BackgroundColor = Colors.Red;
+                        break;
+                    case "BlueButton":
+                        this.btn.BackgroundColor = Colors.Blue;
+                        break;
+                    default:
+                        throw new NotImplementedException($"case {reply} not implemented!");
+                }
+            });
+        };
 
         this.chatCompletion = new ChatCompletion("gpt-3.5-turbo", this.ApiKey, "You are a professor", this.readUserInput, this.writeBotOutput);
         this.textCompletion = new TextCompletion("text-davinci-003", this.ApiKey, this.readUserInput, this.writeBotOutput);
-        this.intention = new Intention("text-davinci-003", this.ApiKey, this.readUserInput, this.writeBotOutput);
+        this.intention = new Intention("text-davinci-003", this.ApiKey, this.readUserInput, this.writeBotOutput, this.changeGui);
     }
 
     private async void OnSubmitBtnClicked(object sender, EventArgs e)
