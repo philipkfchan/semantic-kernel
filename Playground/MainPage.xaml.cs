@@ -9,7 +9,7 @@ public partial class MainPage : ContentPage
     private Intention intention;
     private string ApiKey
     {
-        get => "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";
+        get => "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";
     }
     private Func<string> readUserInput;
     private Action<string> writeBotOutput;
@@ -18,6 +18,8 @@ public partial class MainPage : ContentPage
     {
         this.InitializeComponent();
         this.modelPicker.SelectedItem = "chat";
+
+        this.redTrace.IsVisible = false;
 
         this.readUserInput = () =>
         {

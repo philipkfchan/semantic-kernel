@@ -8,26 +8,29 @@
             HorizontalOptions="Center">
             <VerticalStackLayout
                 Spacing="10"
+                Padding="10"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
-                <Editor x:Name="responseEditor"
+                <Editor 
+                    x:Name="responseEditor"
                     Placeholder="OpenAI"
-                    HeightRequest="500"
-                    WidthRequest="500"
+                    HeightRequest="470"
+                    WidthRequest="700"
                     FontSize="12"
                     TextColor="Black"
                     PlaceholderColor="Blue"
                     IsReadOnly="True"
                     BackgroundColor="LightYellow"
                     VerticalOptions="Center"
-            HorizontalOptions="Center"/>
-                <Picker x:Name="modelPicker"
+                    HorizontalOptions="Center"/>
+                <Picker 
+                    x:Name="modelPicker"
                     Title="Feature:"
                     FontSize="12"
                     TitleColor="blue"
                     VerticalOptions="Center"
-            HorizontalOptions="Center"
-                    WidthRequest="500"
+                    HorizontalOptions="Center"
+                    WidthRequest="700"
                     BackgroundColor="LightYellow"
                     SelectedIndexChanged="modelPicker_SelectedIndexChanged">
                     <Picker.ItemsSource>
@@ -42,17 +45,18 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
-                <Editor x:Name="promptEditor"
+                <Editor 
+                    x:Name="promptEditor"
                     Placeholder="Enter your prompt here"
                     HeightRequest="75"
-                    WidthRequest="500"
+                    WidthRequest="700"
                     TextColor="Black"
                     FontSize="12"
                     PlaceholderColor="Blue"
                     IsSpellCheckEnabled="True"
                     BackgroundColor="LightYellow"
                     VerticalOptions="Center"
-            HorizontalOptions="Center"/>
+                    HorizontalOptions="Center"/>
                 <Button
                     x:Name="submitBtn"
                     Text="Submit"
@@ -67,6 +71,14 @@
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
                 Padding="50">
+                <Image
+                    x:Name="redTrace"
+                    Source="red_trace.png" 
+                    HeightRequest="400"/>
+                <Image 
+                    x:Name="blueTrace"
+                    Source="blue_trace.png" 
+                    HeightRequest="400"/>
                 <Button
                     x:Name="btn"
                     BackgroundColor="Red"
